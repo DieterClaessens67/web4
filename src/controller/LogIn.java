@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import domain.Person;
 import domain.PersonService;
+import domain.UserStatus;
 
 public class LogIn extends RequestHandler {
 
@@ -49,6 +50,7 @@ public class LogIn extends RequestHandler {
 			HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.setAttribute("user", person);
+		session.setAttribute("statusUser", UserStatus.ONLINE);
 	}
 
 }

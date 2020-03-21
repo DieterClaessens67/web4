@@ -7,11 +7,13 @@ import domain.PersonService;
 import domain.Person;
 import domain.Role;
 
+import java.io.IOException;
+
 public abstract class RequestHandler {
 	
 	private PersonService personService;
 	
-	public abstract String handleRequest (HttpServletRequest request, HttpServletResponse response);
+	public abstract String handleRequest (HttpServletRequest request, HttpServletResponse response) throws IOException;
 	
 	public void setModel (PersonService personService) {
 		this.personService = personService;

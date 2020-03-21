@@ -5,7 +5,10 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +20,7 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private Role role;
+	private Map<String,Person> friends;
 
 	public Person(String userId, String password, String firstName,
 			String lastName,Role role) {
@@ -25,6 +29,7 @@ public class Person {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
+		this.friends = new HashMap<>();
 	}
 
 	public Person(String userId, String password, String salt,
@@ -35,9 +40,25 @@ public class Person {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
+		this.friends = new HashMap<>();
 	}
 
 	public Person() {
+	}
+
+	public void addFriend(Person newFriend){
+		if(newFriend == null){
+			throw new DomainException("No value was given for new friend!");
+		}
+		this.friends.put(newFriend.userId,newFriend);
+	}
+
+	public boolean deleteFriend(String userIdDelete){
+		if(userIdDelete == null || userIdDelete.trim().isEmpty()){
+			throw new DomainException("No user id was given to delete!");
+		}
+		Person personToDelete = this.friends.get(userIdDelete);
+		return this.friends.remove(userIdDelete,personToDelete);
 	}
 
 	public Role getRole() {
