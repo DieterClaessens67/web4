@@ -5,10 +5,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,6 +18,7 @@ public class Person {
 	private String lastName;
 	private Role role;
 	private Map<String,Person> friends;
+	private String status;
 
 	public Person(String userId, String password, String firstName,
 			String lastName,Role role) {
@@ -30,6 +28,7 @@ public class Person {
 		setLastName(lastName);
 		setRole(role);
 		this.friends = new HashMap<>();
+		this.status = "OFFLINE";
 	}
 
 	public Person(String userId, String password, String salt,
@@ -41,6 +40,7 @@ public class Person {
 		setLastName(lastName);
 		setRole(role);
 		this.friends = new HashMap<>();
+		this.status = "OFFLINE";
 	}
 
 	public Person() {
@@ -170,4 +170,19 @@ public class Person {
 		this.lastName = lastName;
 	}
 
+	public Map<String, Person> getFriends() {
+		return friends;
+	}
+
+	public Collection<Person> getFriendsCollection(){
+		return this.friends.values();
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

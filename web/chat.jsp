@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: User
@@ -17,6 +18,10 @@
     <jsp:param name="title" value="Chat" />
 </jsp:include>
 <section>
+    <c:if test="${user.getFriendsCollection() != null}">
+        <table id="friendList" align="center">
+        </table>
+    </c:if>
     <p style="text-align: center">
     <input type="text" id="stat">
     </p>
@@ -26,5 +31,6 @@
 </section>
 <!-- Moet op het einde staan in html, anders kent hij de button nog niet en werkt het niet. -->
 <script type="text/javascript" src="js/changeStatus.js"></script>
+<script type="text/javascript" src="js/getFriends.js"></script>
 </body>
 </html>

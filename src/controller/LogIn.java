@@ -50,6 +50,7 @@ public class LogIn extends RequestHandler {
 			HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.setAttribute("user", person);
+		person.setStatus("ONLINE");
 		session.setAttribute("statusUser", UserStatus.ONLINE);
 	}
 
