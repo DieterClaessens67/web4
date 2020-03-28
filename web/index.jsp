@@ -47,6 +47,7 @@
 	</c:otherwise>
 </c:choose>
 	<section>
+		<div id="comments"></div>
 		<p>Was het een interessante projectweek?</p>
 			<label for="name">Name</label>
 			<input type="text" id="name" name="name">
@@ -72,5 +73,6 @@
 	<jsp:include page="footer.jsp">
 		<jsp:param name="title" value="Home" />
 	</jsp:include>
+<script type="text/javascript" src="js/comment.js"></script>
 </body>
 </html>
