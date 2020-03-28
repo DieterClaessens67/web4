@@ -76,6 +76,19 @@ public class Controller extends HttpServlet {
 					JsonObject jsonObject = model.getFriends(user.getUserId());
 					response.getWriter().write(jsonObject.toString());
 					break;
+				case "AddFriend":
+					Person user1 = (Person) request.getSession().getAttribute("user");
+					String newFriendFirstName = request.getParameter("firstName");
+					if(newFriendFirstName != null && !newFriendFirstName.trim().isEmpty()) {
+						Person newFriend = model.getPersonWithFirstName(request.getParameter("firstName"));
+						if(newFriend != null) {
+							user1.addFriend(newFriend);
+							newFriend.addFriend(user1);
+							JsonObject jsonObject1 = model.getFriends(user1.getUserId());
+							response.getWriter().write(jsonObject1.toString());
+						}
+					}
+					break;
 				default:
 					String destination = "index.jsp";
 					if (action != null) {

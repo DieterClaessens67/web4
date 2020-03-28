@@ -14,7 +14,6 @@ function changeStatus() {
 function getData() {
     if (xHRObject.status == 200) {
         if (xHRObject.readyState == 4) {
-            console.log(xHRObject.responseText);
             let serverResponse = xHRObject.responseText;
             let oldStatus = document.getElementById('status');
             oldStatus.innerText = 'Status: ' + serverResponse;

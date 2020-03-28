@@ -27,10 +27,16 @@
     </p>
     <p style="text-align: center">
     <input type="button" id="changeStatus" value="Change Status"/>
+    <p style="text-align: center">
+        <input type="text" id="friendInput">
+    </p>
+    <p style="text-align: center">
+        <input type="button" id="addFriend" value="Add Friend"/>
     </p>
 </section>
 <!-- Moet op het einde staan in html, anders kent hij de button nog niet en werkt het niet. -->
 <script type="text/javascript" src="js/changeStatus.js"></script>
 <script type="text/javascript" src="js/getFriends.js"></script>
+<script type="text/javascript" src="js/addFriend.js"></script>
 </body>
 </html>

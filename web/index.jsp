@@ -45,7 +45,29 @@
 			</p>
 		</form>
 	</c:otherwise>
-</c:choose> </main>
+</c:choose>
+	<section>
+		<p>Was het een interessante projectweek?</p>
+			<label for="name">Name</label>
+			<input type="text" id="name" name="name">
+			<label for="comment">Comment</label>
+			<input type="text" id="comment" name="comment">
+			<label for="score">Score</label>
+			<select id="score">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+			<input type="button" id="commentButton" value="Ok">
+	</section>
+	</main>
 
 	<jsp:include page="footer.jsp">
 		<jsp:param name="title" value="Home" />

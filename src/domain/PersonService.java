@@ -22,6 +22,16 @@ public class PersonService {
 		return getPersonRepository().getAll();
 	}
 
+	public Person getPersonWithFirstName(String firstName){
+		List<Person> people = getPersons();
+		for(Person person: people){
+			if(person.getFirstName().equalsIgnoreCase(firstName)){
+				return person;
+			}
+		}
+		return null;
+	}
+
 	public void addPerson(Person person) {
 		getPersonRepository().add(person);
 	}

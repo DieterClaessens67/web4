@@ -4,8 +4,8 @@ window.addEventListener("load",getFriends);
 
 
 function getFriends() {
-    let url = "Controller?action=GetFriends";
-    xHRObject1.open("GET",url,true);
+    let url1 = "Controller?action=GetFriends";
+    xHRObject1.open("GET",url1,true);
     xHRObject1.onreadystatechange = getData1;
     xHRObject1.send(null);
 }
@@ -27,7 +27,7 @@ function getData1() {
                 let status = document.createTextNode(jsonResponse[friend].status);
                 cell.appendChild(status);
             }
-            setInterval(getFriends,20000);
+            setInterval(getFriends,10000);
         }
     }
 }
