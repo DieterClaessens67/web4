@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
+import db.MessageRepositoryStub;
+import domain.MessageService;
 import domain.Person;
 import domain.PersonService;
 import domain.UserStatus;
@@ -24,6 +26,7 @@ public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private PersonService model;
+	private MessageService messageModel;
 	private ControllerFactory controllerFactory;
 
 	public Controller() {
@@ -33,6 +36,7 @@ public class Controller extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		model = new PersonService();
+		messageModel = new MessageService();
 		controllerFactory = new ControllerFactory();
 	}
 
@@ -88,6 +92,20 @@ public class Controller extends HttpServlet {
 							response.getWriter().write(jsonObject1.toString());
 						}
 					}
+					break;
+				case "Message":
+					Person user2 = (Person) request.getSession().getAttribute("user");
+					String message = request.getParameter("message");
+					String recipientId = request.getParameter("recipient");
+					Person recipient = model.getPerson(recipientId);
+					messageModel.addMessage(user2,recipient,message);
+					JsonObject jsonObject2 = messageModel.getMessages(user2);
+					response.getWriter().write(jsonObject2.toString());
+					break;
+				case "GetMessages":
+					Person user3 = (Person) request.getSession().getAttribute("user");
+					JsonObject jsonObject1 = messageModel.getMessages(user3);
+					response.getWriter().write(jsonObject1.toString());
 					break;
 				default:
 					String destination = "index.jsp";

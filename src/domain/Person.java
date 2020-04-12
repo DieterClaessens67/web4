@@ -17,11 +17,12 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private Role role;
-	private Map<String,Person> friends;
+	private Map<String, Person> friends;
 	private String status;
 
+
 	public Person(String userId, String password, String firstName,
-			String lastName,Role role) {
+				  String lastName, Role role) {
 		setUserId(userId);
 		setHashedPassword(password);
 		setFirstName(firstName);
@@ -32,7 +33,7 @@ public class Person {
 	}
 
 	public Person(String userId, String password, String salt,
-			String firstName, String lastName,Role role) {
+				  String firstName, String lastName, Role role) {
 		setUserId(userId);
 		setPassword(password);
 		setSalt(salt);
@@ -46,19 +47,19 @@ public class Person {
 	public Person() {
 	}
 
-	public void addFriend(Person newFriend){
-		if(newFriend == null){
+	public void addFriend(Person newFriend) {
+		if (newFriend == null) {
 			throw new DomainException("No value was given for new friend!");
 		}
-		this.friends.put(newFriend.userId,newFriend);
+		this.friends.put(newFriend.userId, newFriend);
 	}
 
-	public boolean deleteFriend(String userIdDelete){
-		if(userIdDelete == null || userIdDelete.trim().isEmpty()){
+	public boolean deleteFriend(String userIdDelete) {
+		if (userIdDelete == null || userIdDelete.trim().isEmpty()) {
 			throw new DomainException("No user id was given to delete!");
 		}
 		Person personToDelete = this.friends.get(userIdDelete);
-		return this.friends.remove(userIdDelete,personToDelete);
+		return this.friends.remove(userIdDelete, personToDelete);
 	}
 
 	public Role getRole() {
@@ -66,9 +67,9 @@ public class Person {
 	}
 
 	public void setRole(Role role) {
-		this.role=role;
+		this.role = role;
 	}
-	
+
 
 	public void setUserId(String userId) {
 		if (userId.isEmpty()) {
@@ -174,8 +175,8 @@ public class Person {
 		return friends;
 	}
 
-	public Collection<Person> getFriendsCollection(){
-		return this.friends.values();
+	public Collection<Person> getFriendsCollection() {
+		return this.getFriends().values();
 	}
 
 	public String getStatus() {
